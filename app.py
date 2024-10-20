@@ -4,8 +4,8 @@ import os
 from textblob import TextBlob
 
 
-#api = os.getenv("MAKERSUITE_API_TOKEN")
-genai.configure(api_key="AIzaSyAU7TYsbp3oi4hXjby-ec2YNmqp0NbS6HA")
+api = os.getenv("MAKERSUITE_API_TOKEN")
+genai.configure(api_key=api)
 model = genai.GenerativeModel("gemini-1.5-flash")
 
 app = Flask(__name__)
