@@ -31,7 +31,35 @@ def sentiment_analysis():
 @app.route("/sentiment_analysis_results", methods=["GET", "POST"])
 def sentiment_analysis_results():
     q = request.form.get("q")
-    r = TextBlob(q).sentiment
+    blob = TextBlob(q)
+    
+    polarity = blob.sentiment.polarity
+    subjectivity = blob.sentiment.subjectivity
+    
+    if polarity == 0:
+        polarity_desc = "Neutral sentiment"
+    elif polarity > 0:
+        if polarity < 0.5:
+            polarity_desc = "Slightly positive sentiment"
+        else:
+            polarity_desc = "Strongly positive sentiment"
+    else:
+        if polarity > -0.5:
+            polarity_desc = "Slightly negative sentiment"
+        else:
+            polarity_desc = "Strongly negative sentiment"
+    
+    if subjectivity == 0:
+        subjectivity_desc = "Objective statement"
+    elif subjectivity == 1:
+        subjectivity_desc = "Subjective statement"
+    else:
+        subjectivity_desc = "Partly subjective, partly objective"
+
+    result = f"Sentiment(polarity={polarity}, subjectivity={subjectivity})"
+    explanation = f"Polarity explanation: {polarity_desc}\nSubjectivity explanation: {subjectivity_desc}"
+    
+    r = TextBlob(q).sentiment + "\n" + result + "\n" + explanation
     return(render_template("sentiment_analysis_results.html", r=r))
 
 @app.route("/prediction", methods=["GET", "POST"])
