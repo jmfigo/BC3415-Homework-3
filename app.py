@@ -56,8 +56,8 @@ def sentiment_analysis_results():
     else:
         subjectivity_desc = "Partly subjective, partly objective"
 
-    raw_result = Textblob(q).sentiment
-    raw_result_text = f"{Textblob(q).sentiment}"
+    raw_result = blob.sentiment
+    raw_result_text = f"{raw_result}"
     result = f"Sentiment(polarity={polarity}, subjectivity={subjectivity})"
     explanation = f"Polarity explanation: {polarity_desc}\nSubjectivity explanation: {subjectivity_desc}"
     
