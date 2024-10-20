@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Financial Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='style-index.css')}}">
+</head>
+
+<body>
+    <div class="container">
+        <img src="https://t4.ftcdn.net/jpg/02/10/96/95/360_F_210969565_cIHkcrIzRpWNZzq8eaQnYotG4pkHh0P9.jpg" alt="Robo Advisor">
+        <h2>Welcome to Robo Advisor</h2>
+        <h3><p>My name is SS, I would like to know <b>your</b> name.</p></h3>
+
+        <form action="/financial_QA" method="post">
+            <input type="submit" value="Financial Q&A">
+        </form>
+        <form action="/sentiment_analysis" method="post">
+            <input type="submit" value="Sentiment Analysis">
+        </form>
+        <form action="/prediction" method="post">
+            <input type="submit" value="Prediction">
+        </form>
+        <form action="/joke" method="post">
+            <input type="submit" value="Wanna hear a SG-Certified Joke?">
+        </form>
+    </div>
+</body>
+</html>
