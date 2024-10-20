@@ -56,12 +56,10 @@ def sentiment_analysis_results():
     else:
         subjectivity_desc = "Partly subjective, partly objective"
 
-    result = blob.sentiment
-    result_text = f"{result}"
-    explanation = f"Polarity explanation: {polarity_desc}\nSubjectivity explanation: {subjectivity_desc}"
-    
-    r = result_text + "\n" + explanation
-    return(render_template("sentiment_analysis_results.html", r=r))
+    r = blob.sentiment
+    e = f"Polarity explanation: {polarity_desc}\nSubjectivity explanation: {subjectivity_desc}"
+
+    return(render_template("sentiment_analysis_results.html", r=r, e=e))
 
 @app.route("/prediction", methods=["GET", "POST"])
 def prediction():
